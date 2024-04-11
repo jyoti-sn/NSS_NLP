@@ -1,5 +1,7 @@
+!pip install plotly
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 
 # Load the data into a Pandas DataFrame (assuming you have a 'data.csv' file)
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Country.csv')
@@ -12,7 +14,7 @@ selected_year = st.selectbox('Select a year:', df['Year'].unique())
 filtered_df = df[df['Year'] == selected_year]
 
 # Choose your visualization library (here, using Plotly)
-import plotly.express as px
+
 
 fig = px.bar(filtered_df, x='Country', y='Count')
 
