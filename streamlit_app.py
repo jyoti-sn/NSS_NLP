@@ -1,7 +1,8 @@
 import streamlit as st
 # Choose your visualization library (here, using Plotly)
-import plotly.express as px
 import pandas as pd
+import plotly.express as px
+
 
 df = read_csv('https://github.com/jyoti-sn/NSS_NLP/blob/main/NSS_Country.csv')
 
