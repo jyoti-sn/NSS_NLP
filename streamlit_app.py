@@ -1,4 +1,3 @@
-!pip install streamlit
 import streamlit as st
 # Choose your visualization library (here, using Plotly)
 import plotly.express as px
