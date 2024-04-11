@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 
 # Load the data into a Pandas DataFrame
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Country.csv')
@@ -8,21 +7,23 @@ df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Co
 # Dashboard Header and Layout
 st.title('Countries Mentioned in US National Security Strategy Document')
 
-# Using sidebar for input controls
-st.sidebar.header("Input Options")
-selected_year = st.sidebar.selectbox('Select a year:', df['Year'].unique())
+# Use a slider for selecting the year
+min_year = int(df['Year'].min())
+max_year = int(df['Year'].max())
+selected_year = st.slider('Select a year:', min_value=min_year, max_value=max_year, value=min_year, step=1)
 
 # Filter data based on selected year
-filtered_df = df[df['Year'] == selected_year]
+year_filtered_df = df[df['Year'] == selected_year]
 
-# Plotting with Plotly for interactive charts
-fig = px.bar(filtered_df, x='Country', y='Count', title=f"Countries Mentioned in {selected_year}",
-             labels={"Count": "Mention Count"}, color='Country')
-fig.update_layout(xaxis={'categoryorder':'total descending'})
+# Use a multiselect box to allow users to select countries
+selected_countries = st.multiselect('Select countries:', options=year_filtered_df['Country'].unique(), default=year_filtered_df['Country'].unique())
 
-# Display the interactive chart
-st.plotly_chart(fig)
+# Filter data further based on selected countries
+filtered_df = year_filtered_df[year_filtered_df['Country'].isin(selected_countries)]
 
-# Option to show the data table
-if st.sidebar.checkbox('Show Data Table'):
-    st.dataframe(filtered_df)
+# Display the bar chart using Streamlit's built-in functionality
+if not filtered_df.empty:
+    st.bar_chart(filtered_df.groupby('Country')['Count'].sum())
+else:
+    st.write("No data to display.")
+
