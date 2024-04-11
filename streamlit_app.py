@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Load the data into a Pandas DataFrame (assuming you have a 'data.csv' file)
-df = pd.read_csv('https://github.com/jyoti-sn/NSS_NLP/blob/main/NSS_Country.csv', error_bad_lines=False)
+df = pd.read_csv('https://github.com/jyoti-sn/NSS_NLP/blob/main/NSS_Country.csv')
 
 # Dashboard Header and Layout
 st.title('Country Counts Dashboard')
