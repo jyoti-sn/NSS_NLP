@@ -5,7 +5,7 @@ import pandas as pd
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Country.csv')
 
 # Dashboard Header and Layout
-st.title('Country Counts Dashboard')
+st.title('Countries Mentioned in US National Security Strategy Document')
 selected_year = st.selectbox('Select a year:', df['Year'].unique())
 
 # Filter data based on selected year
