@@ -1,0 +1,946 @@
+,Year,Country,Count
+0,1987,Afghanistan,3
+1,1987,Angola,1
+2,1987,Australia,1
+3,1987,Bolivia,1
+4,1987,Cambodia,4
+5,1987,Canada,1
+6,1987,China,3
+7,1987,Colombia,1
+8,1987,Cuba,3
+9,1987,Ecuador,1
+10,1987,Egypt,1
+11,1987,Greece,1
+12,1987,Iceland,2
+13,1987,India,2
+14,1987,Iran,2
+15,1987,Iraq,1
+16,1987,Israel,5
+17,1987,Japan,10
+18,1987,Laos,1
+19,1987,Libya,4
+20,1987,Micronesia,1
+21,1987,Nicaragua,4
+22,1987,North Korea,2
+23,1987,Pakistan,4
+24,1987,Philippines,3
+25,1987,Poland,1
+26,1987,Portugal,1
+27,1987,Russia,2
+28,1987,Senegal,1
+29,1987,South Africa,2
+30,1987,Spain,1
+31,1987,Syria,2
+32,1987,Thailand,4
+33,1987,Turkey,1
+34,1987,United Kingdom,1
+35,1987,United States,90
+36,1987,Uruguay,1
+37,1987,Vietnam,2
+38,1988,Afghanistan,8
+39,1988,Angola,4
+40,1988,Australia,2
+41,1988,Cambodia,5
+42,1988,Canada,4
+43,1988,Chad,1
+44,1988,China,7
+45,1988,Comoros,1
+46,1988,Cuba,3
+47,1988,Dominica,1
+48,1988,Egypt,1
+49,1988,El Salvador,2
+50,1988,Fiji,1
+51,1988,Germany,2
+52,1988,Guinea,1
+53,1988,Hong Kong,1
+54,1988,Iceland,1
+55,1988,India,6
+56,1988,Indonesia,1
+57,1988,Iran,8
+58,1988,Iraq,2
+59,1988,Israel,4
+60,1988,Japan,17
+61,1988,Kenya,1
+62,1988,Kiribati,1
+63,1988,Laos,1
+64,1988,Latvia,1
+65,1988,Libya,4
+66,1988,Lithuania,1
+67,1988,Malaysia,1
+68,1988,Micronesia,1
+69,1988,Mongolia,1
+70,1988,Namibia,1
+71,1988,New Zealand,2
+72,1988,Nicaragua,11
+73,1988,North Korea,3
+74,1988,Pakistan,6
+75,1988,Palau,1
+76,1988,Philippines,7
+77,1988,Russia,2
+78,1988,Somalia,1
+79,1988,South Africa,5
+80,1988,Thailand,4
+81,1988,Togo,1
+82,1988,United States,70
+83,1988,Vietnam,3
+84,1988,Yemen,2
+85,1990,Afghanistan,3
+86,1990,Angola,2
+87,1990,Australia,1
+88,1990,Canada,1
+89,1990,China,6
+90,1990,Cuba,1
+91,1990,Ethiopia,1
+92,1990,Germany,6
+93,1990,Haiti,1
+94,1990,Hungary,1
+95,1990,India,2
+96,1990,Iran,1
+97,1990,Israel,2
+98,1990,Japan,10
+99,1990,Lebanon,1
+100,1990,Libya,2
+101,1990,Malta,1
+102,1990,Mexico,2
+103,1990,Mozambique,1
+104,1990,Namibia,2
+105,1990,Nicaragua,1
+106,1990,Pakistan,3
+107,1990,Panama,2
+108,1990,Philippines,3
+109,1990,Poland,1
+110,1990,Russia,2
+111,1990,South Africa,2
+112,1990,Syria,1
+113,1990,Taiwan,1
+114,1990,United States,40
+115,1990,Uruguay,1
+116,1990,Vietnam,1
+117,1991,Afghanistan,2
+118,1991,Angola,1
+119,1991,Argentina,1
+120,1991,Australia,3
+121,1991,Brazil,1
+122,1991,Cambodia,5
+123,1991,Canada,4
+124,1991,Chile,1
+125,1991,China,7
+126,1991,Colombia,1
+127,1991,Cuba,3
+128,1991,Egypt,2
+129,1991,Ethiopia,1
+130,1991,France,1
+131,1991,Germany,7
+132,1991,Haiti,1
+133,1991,Hungary,2
+134,1991,India,1
+135,1991,Iran,2
+136,1991,Iraq,12
+137,1991,Israel,5
+138,1991,Italy,1
+139,1991,Japan,11
+140,1991,Jordan,1
+141,1991,Kuwait,6
+142,1991,Liberia,2
+143,1991,Libya,1
+144,1991,Mexico,3
+145,1991,Morocco,1
+146,1991,Mozambique,1
+147,1991,Namibia,1
+148,1991,New Zealand,1
+149,1991,Nicaragua,3
+150,1991,Nigeria,1
+151,1991,North Korea,3
+152,1991,Pakistan,2
+153,1991,Panama,1
+154,1991,Peru,1
+155,1991,Philippines,3
+156,1991,Poland,3
+157,1991,Russia,2
+158,1991,Somalia,1
+159,1991,South Africa,2
+160,1991,Taiwan,2
+161,1991,Turkey,1
+162,1991,United Kingdom,1
+163,1991,United States,45
+164,1991,Uruguay,1
+165,1991,Venezuela,1
+166,1991,Vietnam,4
+167,1991,Western Sahara,1
+168,1993,Afghanistan,1
+169,1993,Angola,2
+170,1993,Australia,1
+171,1993,Belarus,1
+172,1993,Benin,1
+173,1993,Cambodia,1
+174,1993,China,4
+175,1993,Cuba,3
+176,1993,El Salvador,1
+177,1993,Ethiopia,1
+178,1993,France,1
+179,1993,Gabon,1
+180,1993,Germany,2
+181,1993,Haiti,1
+182,1993,Iraq,1
+183,1993,Ivory Coast,1
+184,1993,Japan,10
+185,1993,Kazakhstan,1
+186,1993,Kuwait,2
+187,1993,Laos,1
+188,1993,Lebanon,1
+189,1993,Mozambique,1
+190,1993,Namibia,1
+191,1993,Nicaragua,1
+192,1993,North Korea,2
+193,1993,Peru,1
+194,1993,Russia,3
+195,1993,Somalia,1
+196,1993,South Africa,2
+197,1993,Ukraine,1
+198,1993,United States,37
+199,1993,Vietnam,2
+200,1993,Western Sahara,1
+201,1993,Zambia,1
+202,1994,Afghanistan,1
+203,1994,Angola,1
+204,1994,Argentina,2
+205,1994,Australia,1
+206,1994,Belarus,1
+207,1994,Benin,1
+208,1994,Brazil,2
+209,1994,Burundi,1
+210,1994,Cambodia,2
+211,1994,Canada,1
+212,1994,Chile,1
+213,1994,China,10
+214,1994,Cuba,3
+215,1994,Cyprus,1
+216,1994,Eritrea,1
+217,1994,Germany,3
+218,1994,Guatemala,3
+219,1994,Haiti,5
+220,1994,India,3
+221,1994,Iran,6
+222,1994,Iraq,9
+223,1994,Israel,2
+224,1994,Japan,7
+225,1994,Kazakhstan,2
+226,1994,Kosovo,1
+227,1994,Kuwait,1
+228,1994,Liberia,2
+229,1994,Libya,1
+230,1994,Macedonia,1
+231,1994,Malawi,1
+232,1994,Mali,1
+233,1994,Mexico,2
+234,1994,Mozambique,2
+235,1994,Namibia,1
+236,1994,Netherlands,1
+237,1994,Niger,1
+238,1994,Nigeria,3
+239,1994,North Korea,2
+240,1994,Pakistan,2
+241,1994,Philippines,2
+242,1994,Poland,1
+243,1994,Russia,17
+244,1994,Rwanda,3
+245,1994,Serbia,2
+246,1994,Somalia,5
+247,1994,South Africa,9
+248,1994,South Korea,2
+249,1994,Sudan,1
+250,1994,Thailand,1
+251,1994,Ukraine,9
+252,1994,United States,38
+253,1995,Afghanistan,1
+254,1995,Angola,3
+255,1995,Argentina,3
+256,1995,Belarus,4
+257,1995,Benin,1
+258,1995,Brazil,2
+259,1995,Burundi,2
+260,1995,Cambodia,3
+261,1995,Canada,4
+262,1995,Chile,4
+263,1995,China,16
+264,1995,Cuba,4
+265,1995,Cyprus,1
+266,1995,Czech Republic,1
+267,1995,El Salvador,2
+268,1995,Eritrea,1
+269,1995,France,1
+270,1995,Germany,2
+271,1995,Guatemala,3
+272,1995,Haiti,10
+273,1995,Hungary,2
+274,1995,India,3
+275,1995,Iran,6
+276,1995,Iraq,10
+277,1995,Ireland,2
+278,1995,Israel,7
+279,1995,Japan,7
+280,1995,Jordan,1
+281,1995,Kazakhstan,7
+282,1995,Kuwait,4
+283,1995,Liberia,3
+284,1995,Libya,1
+285,1995,Malawi,1
+286,1995,Mali,1
+287,1995,Mexico,7
+288,1995,Mozambique,1
+289,1995,Namibia,1
+290,1995,Netherlands,1
+291,1995,Niger,1
+292,1995,Nigeria,1
+293,1995,North Korea,7
+294,1995,Pakistan,2
+295,1995,Philippines,2
+296,1995,Poland,1
+297,1995,Russia,29
+298,1995,Rwanda,7
+299,1995,Somalia,4
+300,1995,South Africa,8
+301,1995,South Korea,1
+302,1995,Sudan,2
+303,1995,Thailand,1
+304,1995,Ukraine,18
+305,1995,United Kingdom,1
+306,1995,United States,58
+307,1995,Vietnam,1
+308,1996,Afghanistan,1
+309,1996,Angola,3
+310,1996,Argentina,4
+311,1996,Australia,1
+312,1996,Belarus,9
+313,1996,Benin,1
+314,1996,Brazil,4
+315,1996,Burundi,2
+316,1996,Cambodia,3
+317,1996,Canada,5
+318,1996,Chile,6
+319,1996,China,24
+320,1996,Cuba,6
+321,1996,Cyprus,1
+322,1996,Czech Republic,1
+323,1996,Ecuador,1
+324,1996,Eritrea,1
+325,1996,France,3
+326,1996,Germany,3
+327,1996,Guatemala,3
+328,1996,Haiti,13
+329,1996,Hungary,3
+330,1996,India,3
+331,1996,Iran,10
+332,1996,Iraq,14
+333,1996,Ireland,3
+334,1996,Israel,9
+335,1996,Japan,10
+336,1996,Jordan,2
+337,1996,Kuwait,6
+338,1996,Liberia,3
+339,1996,Libya,2
+340,1996,Macedonia,1
+341,1996,Malawi,1
+342,1996,Mali,1
+343,1996,Mexico,7
+344,1996,Mozambique,1
+345,1996,Namibia,2
+346,1996,North Korea,16
+347,1996,Pakistan,2
+348,1996,Peru,1
+349,1996,Philippines,2
+350,1996,Poland,1
+351,1996,Romania,1
+352,1996,Russia,37
+353,1996,Rwanda,7
+354,1996,Sierra Leone,1
+355,1996,Somalia,4
+356,1996,South Africa,14
+357,1996,South Korea,1
+358,1996,Spain,1
+359,1996,Sudan,3
+360,1996,Taiwan,2
+361,1996,Thailand,1
+362,1996,Turkey,1
+363,1996,Ukraine,22
+364,1996,United Kingdom,2
+365,1996,United States,106
+366,1996,Uruguay,1
+367,1996,Vietnam,8
+368,1996,Zambia,1
+369,1997,Afghanistan,1
+370,1997,Albania,1
+371,1997,Angola,1
+372,1997,Australia,2
+373,1997,Belarus,1
+374,1997,Brunei,1
+375,1997,Burundi,1
+376,1997,Cambodia,1
+377,1997,Canada,4
+378,1997,Chile,3
+379,1997,China,23
+380,1997,Colombia,2
+381,1997,Cuba,2
+382,1997,Cyprus,2
+383,1997,East Timor,1
+384,1997,Guatemala,1
+385,1997,Haiti,9
+386,1997,Hong Kong,1
+387,1997,Hungary,1
+388,1997,India,3
+389,1997,Indonesia,2
+390,1997,Iran,8
+391,1997,Iraq,10
+392,1997,Ireland,1
+393,1997,Israel,3
+394,1997,Italy,1
+395,1997,Japan,12
+396,1997,Kosovo,1
+397,1997,Kuwait,1
+398,1997,Liberia,1
+399,1997,Libya,3
+400,1997,Macedonia,1
+401,1997,Malaysia,1
+402,1997,Mexico,7
+403,1997,Nigeria,3
+404,1997,North Korea,5
+405,1997,Pakistan,3
+406,1997,Paraguay,1
+407,1997,Philippines,2
+408,1997,Poland,1
+409,1997,Russia,24
+410,1997,Serbia,1
+411,1997,Singapore,3
+412,1997,South Africa,3
+413,1997,South Korea,2
+414,1997,Taiwan,1
+415,1997,Thailand,2
+416,1997,Turkey,3
+417,1997,Ukraine,11
+418,1997,United States,47
+419,1997,Venezuela,3
+420,1997,Vietnam,2
+421,1998,Afghanistan,5
+422,1998,Angola,2
+423,1998,Argentina,2
+424,1998,Australia,3
+425,1998,Barbados,1
+426,1998,Belarus,4
+427,1998,Benin,1
+428,1998,Brazil,2
+429,1998,Brunei,1
+430,1998,Bulgaria,1
+431,1998,Burundi,1
+432,1998,Cambodia,1
+433,1998,Canada,3
+434,1998,Chile,3
+435,1998,China,47
+436,1998,Costa Rica,1
+437,1998,Cuba,5
+438,1998,Cyprus,2
+439,1998,Czech Republic,3
+440,1998,Eritrea,1
+441,1998,Estonia,2
+442,1998,Ethiopia,2
+443,1998,France,1
+444,1998,Georgia,1
+445,1998,Germany,2
+446,1998,Ghana,1
+447,1998,Haiti,9
+448,1998,Hungary,4
+449,1998,India,9
+450,1998,Indonesia,3
+451,1998,Iran,12
+452,1998,Iraq,18
+453,1998,Ireland,3
+454,1998,Israel,4
+455,1998,Italy,1
+456,1998,Japan,23
+457,1998,Kazakhstan,4
+458,1998,Kenya,1
+459,1998,Kosovo,3
+460,1998,Kuwait,2
+461,1998,Laos,1
+462,1998,Latvia,2
+463,1998,Liberia,1
+464,1998,Libya,5
+465,1998,Lithuania,2
+466,1998,Macedonia,2
+467,1998,Malawi,1
+468,1998,Malaysia,1
+469,1998,Mali,2
+470,1998,Mexico,8
+471,1998,Mozambique,1
+472,1998,Namibia,1
+473,1998,Nigeria,7
+474,1998,North Korea,7
+475,1998,Pakistan,8
+476,1998,Paraguay,1
+477,1998,Peru,1
+478,1998,Philippines,3
+479,1998,Poland,4
+480,1998,Romania,1
+481,1998,Russia,27
+482,1998,Rwanda,4
+483,1998,Senegal,1
+484,1998,Sierra Leone,1
+485,1998,Singapore,2
+486,1998,Slovenia,1
+487,1998,South Africa,5
+488,1998,South Korea,10
+489,1998,Sudan,5
+490,1998,Taiwan,1
+491,1998,Tanzania,1
+492,1998,Thailand,7
+493,1998,Turkey,3
+494,1998,Uganda,2
+495,1998,Ukraine,14
+496,1998,United Kingdom,1
+497,1998,United States,104
+498,1998,Uruguay,1
+499,1998,Venezuela,3
+500,1998,Vietnam,2
+501,1999,Afghanistan,2
+502,1999,Albania,2
+503,1999,Algeria,2
+504,1999,Argentina,2
+505,1999,Armenia,1
+506,1999,Australia,5
+507,1999,Azerbaijan,1
+508,1999,Belarus,4
+509,1999,Brazil,2
+510,1999,Bulgaria,1
+511,1999,Burundi,1
+512,1999,Cambodia,1
+513,1999,Canada,5
+514,1999,Chile,3
+515,1999,China,33
+516,1999,Colombia,5
+517,1999,Croatia,5
+518,1999,Cuba,2
+519,1999,Cyprus,4
+520,1999,Czech Republic,1
+521,1999,East Timor,7
+522,1999,Ecuador,3
+523,1999,Eritrea,1
+524,1999,Estonia,3
+525,1999,Ethiopia,1
+526,1999,Georgia,5
+527,1999,Germany,1
+528,1999,Greece,2
+529,1999,Haiti,5
+530,1999,Hungary,2
+531,1999,India,5
+532,1999,Indonesia,9
+533,1999,Iran,11
+534,1999,Iraq,14
+535,1999,Ireland,3
+536,1999,Israel,7
+537,1999,Japan,24
+538,1999,Kazakhstan,5
+539,1999,Kosovo,14
+540,1999,Kuwait,2
+541,1999,Kyrgyzstan,1
+542,1999,Laos,1
+543,1999,Latvia,3
+544,1999,Lebanon,1
+545,1999,Libya,4
+546,1999,Lithuania,3
+547,1999,Macedonia,1
+548,1999,Mexico,8
+549,1999,Moldova,3
+550,1999,Montenegro,1
+551,1999,Morocco,1
+552,1999,New Zealand,2
+553,1999,Nigeria,10
+554,1999,North Korea,12
+555,1999,Pakistan,7
+556,1999,Paraguay,1
+557,1999,Peru,2
+558,1999,Philippines,2
+559,1999,Poland,2
+560,1999,Romania,1
+561,1999,Russia,34
+562,1999,Rwanda,2
+563,1999,Serbia,8
+564,1999,Sierra Leone,2
+565,1999,Singapore,1
+566,1999,Slovenia,1
+567,1999,South Africa,4
+568,1999,South Korea,4
+569,1999,Sudan,5
+570,1999,Syria,1
+571,1999,Taiwan,2
+572,1999,Thailand,6
+573,1999,Tunisia,1
+574,1999,Turkey,9
+575,1999,Turkmenistan,1
+576,1999,Ukraine,11
+577,1999,United States,80
+578,1999,Venezuela,2
+579,1999,Vietnam,3
+580,1999,Western Sahara,1
+581,2000,Afghanistan,4
+582,2000,Albania,3
+583,2000,Algeria,1
+584,2000,Angola,2
+585,2000,Argentina,1
+586,2000,Armenia,1
+587,2000,Australia,6
+588,2000,Austria,1
+589,2000,Belarus,4
+590,2000,Belize,1
+591,2000,Brazil,1
+592,2000,Burundi,1
+593,2000,Canada,7
+594,2000,Chile,1
+595,2000,China,51
+596,2000,Colombia,4
+597,2000,Croatia,9
+598,2000,Cuba,1
+599,2000,Cyprus,3
+600,2000,Czech Republic,1
+601,2000,East Timor,11
+602,2000,Ecuador,3
+603,2000,Eritrea,3
+604,2000,Estonia,3
+605,2000,Ethiopia,5
+606,2000,Fiji,1
+607,2000,Georgia,3
+608,2000,Germany,3
+609,2000,Ghana,2
+610,2000,Greece,2
+611,2000,Guatemala,2
+612,2000,Haiti,4
+613,2000,Honduras,1
+614,2000,Hungary,2
+615,2000,India,11
+616,2000,Indonesia,9
+617,2000,Iran,14
+618,2000,Iraq,14
+619,2000,Ireland,3
+620,2000,Israel,6
+621,2000,Japan,30
+622,2000,Jordan,1
+623,2000,Kazakhstan,4
+624,2000,Kenya,4
+625,2000,Kosovo,29
+626,2000,Kuwait,2
+627,2000,Kyrgyzstan,1
+628,2000,Latvia,3
+629,2000,Lebanon,1
+630,2000,Libya,4
+631,2000,Lithuania,3
+632,2000,Macedonia,1
+633,2000,Malawi,2
+634,2000,Mali,2
+635,2000,Mexico,13
+636,2000,Moldova,3
+637,2000,Montenegro,7
+638,2000,Morocco,1
+639,2000,Mozambique,2
+640,2000,New Zealand,1
+641,2000,Nicaragua,2
+642,2000,Nigeria,11
+643,2000,North Korea,12
+644,2000,Norway,1
+645,2000,Pakistan,13
+646,2000,Paraguay,2
+647,2000,Peru,2
+648,2000,Philippines,3
+649,2000,Poland,3
+650,2000,Russia,40
+651,2000,Rwanda,1
+652,2000,Senegal,1
+653,2000,Serbia,4
+654,2000,Sierra Leone,2
+655,2000,Singapore,3
+656,2000,Slovenia,1
+657,2000,South Africa,6
+658,2000,South Korea,5
+659,2000,Sudan,4
+660,2000,Switzerland,1
+661,2000,Syria,1
+662,2000,Taiwan,10
+663,2000,Tanzania,2
+664,2000,Thailand,8
+665,2000,Tunisia,1
+666,2000,Turkey,8
+667,2000,Uganda,2
+668,2000,Ukraine,12
+669,2000,United Kingdom,1
+670,2000,United States,161
+671,2000,Uruguay,1
+672,2000,Venezuela,2
+673,2000,Vietnam,1
+674,2000,Yemen,1
+675,2000,Zambia,2
+676,2000,Zimbabwe,1
+677,2002,Afghanistan,6
+678,2002,Australia,3
+679,2002,Brazil,1
+680,2002,Canada,3
+681,2002,Chile,2
+682,2002,China,18
+683,2002,Colombia,1
+684,2002,Ethiopia,1
+685,2002,India,15
+686,2002,Indonesia,3
+687,2002,Iran,1
+688,2002,Iraq,1
+689,2002,Israel,5
+690,2002,Japan,5
+691,2002,Jordan,1
+692,2002,Kenya,1
+693,2002,MExIco,1
+694,2002,Mexico,2
+695,2002,Morocco,1
+696,2002,New Zealand,1
+697,2002,Nigeria,1
+698,2002,North Korea,1
+699,2002,Pakistan,4
+700,2002,Philippines,1
+701,2002,Russia,14
+702,2002,Singapore,2
+703,2002,South Africa,1
+704,2002,South Korea,1
+705,2002,Taiwan,4
+706,2002,Thailand,1
+707,2002,United States,42
+708,2006,Afghanistan,13
+709,2006,Armenia,1
+710,2006,Australia,2
+711,2006,Bahrain,2
+712,2006,Belarus,1
+713,2006,Botswana,2
+714,2006,Brazil,1
+715,2006,Cambodia,1
+716,2006,Canada,2
+717,2006,Chile,2
+718,2006,China,24
+719,2006,Colombia,1
+720,2006,Costa Rica,1
+721,2006,Cuba,1
+722,2006,Dominican Republic,2
+723,2006,Ecuador,1
+724,2006,Egypt,3
+725,2006,El Salvador,1
+726,2006,Eritrea,1
+727,2006,Georgia,1
+728,2006,Guatemala,1
+729,2006,Honduras,1
+730,2006,India,11
+731,2006,Indonesia,4
+732,2006,Iran,10
+733,2006,Iraq,26
+734,2006,Ireland,2
+735,2006,Israel,6
+736,2006,Japan,4
+737,2006,Jordan,4
+738,2006,Kazakhstan,1
+739,2006,Kuwait,1
+740,2006,Kyrgyzstan,1
+741,2006,Lebanon,1
+742,2006,Lesotho,1
+743,2006,Libya,2
+744,2006,Macedonia,1
+745,2006,Malaysia,3
+746,2006,Mexico,1
+747,2006,Morocco,4
+748,2006,Namibia,1
+749,2006,Nepal,1
+750,2006,Nicaragua,1
+751,2006,Oman,2
+752,2006,Pakistan,8
+753,2006,Panama,1
+754,2006,Peru,1
+755,2006,Philippines,1
+756,2006,Poland,1
+757,2006,Russia,16
+758,2006,Saudi Arabia,4
+759,2006,Singapore,2
+760,2006,Slovakia,1
+761,2006,South Africa,1
+762,2006,Spain,1
+763,2006,Sudan,1
+764,2006,Swaziland,1
+765,2006,Syria,4
+766,2006,Taiwan,3
+767,2006,Thailand,3
+768,2006,Ukraine,3
+769,2006,United Kingdom,3
+770,2006,United States,62
+771,2006,Vietnam,1
+772,2006,Zimbabwe,1
+773,2010,Afghanistan,20
+774,2010,Argentina,1
+775,2010,Australia,1
+776,2010,Brazil,5
+777,2010,Canada,2
+778,2010,China,10
+779,2010,Cyprus,1
+780,2010,Egypt,1
+781,2010,France,1
+782,2010,Germany,1
+783,2010,Haiti,2
+784,2010,India,9
+785,2010,Indonesia,3
+786,2010,Iran,10
+787,2010,Iraq,16
+788,2010,Israel,11
+789,2010,Japan,2
+790,2010,Jordan,1
+791,2010,Kenya,1
+792,2010,Lebanon,1
+793,2010,Liberia,1
+794,2010,Mexico,3
+795,2010,Nigeria,1
+796,2010,North Korea,2
+797,2010,Pakistan,13
+798,2010,Philippines,1
+799,2010,Russia,14
+800,2010,Saudi Arabia,2
+801,2010,Somalia,1
+802,2010,South Africa,4
+803,2010,South Korea,3
+804,2010,Syria,1
+805,2010,Taiwan,1
+806,2010,Thailand,1
+807,2010,Turkey,1
+808,2010,United Kingdom,1
+809,2010,United States,67
+810,2010,Yemen,1
+811,2015,Afghanistan,9
+812,2015,Australia,2
+813,2015,Brazil,1
+814,2015,Canada,3
+815,2015,China,10
+816,2015,Colombia,3
+817,2015,Cuba,2
+818,2015,Egypt,1
+819,2015,El Salvador,1
+820,2015,France,1
+821,2015,Georgia,1
+822,2015,Germany,1
+823,2015,Guatemala,1
+824,2015,Haiti,2
+825,2015,Honduras,1
+826,2015,India,6
+827,2015,Indonesia,1
+828,2015,Iran,8
+829,2015,Iraq,9
+830,2015,Israel,4
+831,2015,Italy,1
+832,2015,Japan,4
+833,2015,Jordan,1
+834,2015,Libya,2
+835,2015,Malaysia,1
+836,2015,Mali,1
+837,2015,Mexico,2
+838,2015,Moldova,1
+839,2015,New Zealand,1
+840,2015,Nigeria,1
+841,2015,North Korea,1
+842,2015,Pakistan,2
+843,2015,Peru,1
+844,2015,Philippines,4
+845,2015,Poland,1
+846,2015,Russia,8
+847,2015,Somalia,3
+848,2015,South Korea,3
+849,2015,South Sudan,1
+850,2015,Sudan,1
+851,2015,Syria,5
+852,2015,Thailand,2
+853,2015,Tunisia,2
+854,2015,Turkey,1
+855,2015,Ukraine,5
+856,2015,United States,23
+857,2015,Venezuela,1
+858,2015,Vietnam,1
+859,2015,Yemen,1
+860,2017,Afghanistan,5
+861,2017,Australia,3
+862,2017,Belgium,1
+863,2017,Canada,1
+864,2017,China,30
+865,2017,Cuba,3
+866,2017,Egypt,1
+867,2017,El Salvador,1
+868,2017,France,1
+869,2017,Georgia,1
+870,2017,Germany,1
+871,2017,Guatemala,1
+872,2017,Honduras,1
+873,2017,India,7
+874,2017,Indonesia,2
+875,2017,Iran,12
+876,2017,Iraq,7
+877,2017,Israel,3
+878,2017,Japan,4
+879,2017,Malaysia,2
+880,2017,New Zealand,2
+881,2017,North Korea,14
+882,2017,Pakistan,5
+883,2017,Philippines,2
+884,2017,Russia,22
+885,2017,Saudi Arabia,1
+886,2017,Singapore,2
+887,2017,South Korea,3
+888,2017,Spain,1
+889,2017,Syria,5
+890,2017,Taiwan,2
+891,2017,Thailand,2
+892,2017,Ukraine,1
+893,2017,United Kingdom,1
+894,2017,United States,109
+895,2017,Venezuela,3
+896,2017,Vietnam,2
+897,2022,Afghanistan,4
+898,2022,Antarctica,1
+899,2022,Argentina,1
+900,2022,Australia,7
+901,2022,Belarus,1
+902,2022,Cameroon,1
+903,2022,Canada,2
+904,2022,China,7
+905,2022,Cuba,1
+906,2022,Ethiopia,1
+907,2022,Finland,2
+908,2022,France,1
+909,2022,Georgia,1
+910,2022,Germany,1
+911,2022,India,6
+912,2022,Indonesia,1
+913,2022,Iran,6
+914,2022,Israel,3
+915,2022,Italy,1
+916,2022,Japan,5
+917,2022,Kazakhstan,1
+918,2022,Kenya,1
+919,2022,Libya,1
+920,2022,Mexico,1
+921,2022,Moldova,1
+922,2022,Mozambique,1
+923,2022,New Zealand,1
+924,2022,Nicaragua,1
+925,2022,Nigeria,2
+926,2022,North Korea,1
+927,2022,Philippines,1
+928,2022,Russia,54
+929,2022,Senegal,1
+930,2022,Somalia,2
+931,2022,South Africa,2
+932,2022,Sweden,3
+933,2022,Syria,3
+934,2022,Taiwan,3
+935,2022,Tajikistan,1
+936,2022,Thailand,1
+937,2022,Turkey,1
+938,2022,Turkmenistan,1
+939,2022,Ukraine,32
+940,2022,United Kingdom,7
+941,2022,United States,88
+942,2022,Uzbekistan,1
+943,2022,Venezuela,1
+944,2022,Yemen,2
