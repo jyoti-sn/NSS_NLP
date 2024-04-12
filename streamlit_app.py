@@ -1,9 +1,15 @@
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
+from wordcloud import WordCloud, STOPWORDS
+import matplotlib.pyplot as plt
 
-# Load the data into a Pandas DataFrame
-df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
+# Load the data into Pandas DataFrames
+df1 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
+df2 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Summary_Topics.csv')
+
+# Merge the DataFrames on the 'Year' column
+df = pd.merge(df1, df2, on='Year')
 
 # Presidential DataFrame
 presidents_df = pd.DataFrame({
@@ -71,6 +77,7 @@ layer = pdk.Layer(
 )
 view_state = pdk.ViewState(latitude=heatmap_data['Latitude'].mean(), longitude=heatmap_data['Longitude'].mean(), zoom=1)
 
+# Display the heatmap and bar chart
 col1, col2 = st.columns(2)
 with col1:
     st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state, tooltip={
@@ -89,3 +96,11 @@ st.header(f"{group_option} Countries' Mention Percentages")
 group_percentage_chart = st.bar_chart(group_percentage, use_container_width=True)
 st.write(f"Total mentions for {group_option} countries in {selected_year}: {int(group_df['Count'].sum())}")
 
+# Create a word cloud based on the 'Summary Topics' for the selected year
+st.header("Top topics mentioned in this year")
+summary_topics = year_filtered_df['Summary Topics'].str.split(',').explode().value_counts()
+wordcloud = WordCloud(stopwords=STOPWORDS, background_color='white', width=800, height=400).generate_from_frequencies(summary_topics)
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.imshow(wordcloud, interpolation='bilinear')
+ax.axis('off')
+st.pyplot(fig)
