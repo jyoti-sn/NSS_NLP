@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
+from datetime import datetime
 
 # Load the data into a Pandas DataFrame
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
@@ -22,14 +23,14 @@ G20_countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France'
                 'South Africa', 'Korea, Republic of', 'Turkey', 'United Kingdom', 'United States', 'European Union']
 
 # Dashboard Header and Layout
-st.set_page_config(layout="wide")  # Set the page layout to wide
+st.set_page_config(layout="wide", page_title="How does the white house see the world?")
 st.title('How does the white house see the world?')
 st.subheader("Analysis of the US National Security Strategy Document")
 
 # Use a slider for selecting the year
 available_years = df['Year'].unique()
 available_years.sort()
-selected_year = st.slider('Select a year:', min_value=min(available_years), max_value=max(available_years), value=min(available_years))
+selected_year = st.sidebar.slider('Select a year:', min_value=min(available_years), max_value=max(available_years), value=min(available_years))
 
 # Filter data based on selected year
 year_filtered_df = df[df['Year'] == selected_year]
@@ -40,14 +41,14 @@ if not president_info.empty:
     st.write(f"President in {selected_year}: {president_info['President'].values[0]} ({president_info['Party'].values[0]} Party)")
 
 # Country filter for excluding or including the United States
-country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
+country_option = st.sidebar.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
 
 # Apply US filter to the dataframe
 if country_option == 'Exclude United States':
     year_filtered_df = year_filtered_df[year_filtered_df['Country'] != 'United States']
 
 # Group Selection for G-5 or G-20
-group_option = st.radio("Select Group:", ('G-5', 'G-20'))
+group_option = st.sidebar.radio("Select Group:", ('G-5', 'G-20'))
 
 # Apply group filter
 if group_option == 'G-5':
@@ -71,16 +72,25 @@ layer = pdk.Layer(
 )
 view_state = pdk.ViewState(latitude=heatmap_data['Latitude'].mean(), longitude=heatmap_data['Longitude'].mean(), zoom=1)
 
-# Display the layout in two columns
 col1, col2 = st.columns(2)
 with col1:
-    st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state))
+    st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state, tooltip={
+        "html": "<b>{Country}</b><br>Mentions: {Count}",
+        "style": {"color": "white", "font-family": "Arial", "font-size": "12px", "padding": "10px"}
+    }))
+
 with col2:
     st.header("Total Mentions by Country")
     bar_chart_data = year_filtered_df.groupby('Country')['Count'].sum()
-    st.bar_chart(bar_chart_data)
+    bar_chart = st.bar_chart(bar_chart_data, use_container_width=True)
+    bar_chart.figure.set_facecolor('#f0f0f0')
+    bar_chart.figure.set_edgecolor('#f0f0f0')
+    st.write(f"Total mentions in {selected_year}: {int(total_count_year)}")
 
 # Display group specific data
 st.header(f"{group_option} Countries' Mention Percentages")
-st.bar_chart(group_percentage)
+group_percentage_chart = st.bar_chart(group_percentage, use_container_width=True)
+group_percentage_chart.figure.set_facecolor('#f0f0f0')
+group_percentage_chart.figure.set_edgecolor('#f0f0f0')
+st.write(f"Total mentions for {group_option} countries in {selected_year}: {int(group_df['Count'].sum())}")
 
