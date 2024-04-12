@@ -116,22 +116,45 @@ ax.axis('off')
 st.pyplot(fig)
 
 # Country correlation analysis
+import streamlit as st
+import pandas as pd
+import pydeck as pdk
+from wordcloud import WordCloud, STOPWORDS
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy.stats as stats
+
+# Load the data into Pandas DataFrames
+df1 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
+df2 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Summary_Topics.csv')
+
+# Merge the DataFrames on the 'Year' column
+df = pd.merge(df1, df2, on='Year')
+
+# ... <rest of code is the same as before> ...
+
+# Country correlation analysis
 with st.sidebar:
     if country1 != country2:
         country1_data = df[df['Country'] == country1]['Count']
         country2_data = df[df['Country'] == country2]['Count']
-        corr, p_value = stats.pearsonr(country1_data, country2_data)
 
-        if abs(corr) >= 0.7:
-            corr_description = "Very strong correlation"
-        elif abs(corr) >= 0.5:
-            corr_description = "Strong correlation"
-        elif abs(corr) >= 0.3:
-            corr_description = "Moderate correlation"
+        # Ensure both countries have data across all years
+        if country1_data.size == country2_data.size:
+            corr, p_value = stats.pearsonr(country1_data, country2_data)
+
+            if abs(corr) >= 0.7:
+                corr_description = "Very strong correlation"
+            elif abs(corr) >= 0.5:
+                corr_description = "Strong correlation"
+            elif abs(corr) >= 0.3:
+                corr_description = "Moderate correlation"
+            else:
+                corr_description = "Weak or no correlation"
+
+            st.write(f"The correlation between {country1} and {country2} is {corr_description} with a correlation coefficient of {corr:.2f} and a p-value of {p_value:.2f}.")
         else:
-            corr_description = "Weak or no correlation"
-
-        st.write(f"The correlation between {country1} and {country2} is {corr_description} with a correlation coefficient of {corr:.2f} and a p-value of {p_value:.2f}.")
+            st.write(f"Correlation cannot be calculated: {country1} and {country2} might not have data for the same years.")
     else:
         st.write("Please select two different countries to perform the correlation analysis.")
 
