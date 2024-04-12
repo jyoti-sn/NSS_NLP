@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
-import matplotlib.pyplot as plt
 
 # Load the data into a Pandas DataFrame
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
@@ -82,17 +81,11 @@ with col1:
 with col2:
     st.header("Total Mentions by Country")
     bar_chart_data = year_filtered_df.groupby('Country')['Count'].sum()
-    fig, ax = plt.subplots(figsize=(8, 6))
-    ax.bar(bar_chart_data.index, bar_chart_data.values, color='#f0f0f0', edgecolor='#f0f0f0')
-    ax.set_facecolor('#f0f0f0')
-    st.pyplot(fig)
+    st.bar_chart(bar_chart_data, use_container_width=True)
     st.write(f"Total mentions in {selected_year}: {int(total_count_year)}")
 
 # Display group specific data
 st.header(f"{group_option} Countries' Mention Percentages")
-fig, ax = plt.subplots(figsize=(8, 6))
-ax.bar(group_percentage.index, group_percentage.values, color='#f0f0f0', edgecolor='#f0f0f0')
-ax.set_facecolor('#f0f0f0')
-st.pyplot(fig)
+group_percentage_chart = st.bar_chart(group_percentage, use_container_width=True)
 st.write(f"Total mentions for {group_option} countries in {selected_year}: {int(group_df['Count'].sum())}")
 
