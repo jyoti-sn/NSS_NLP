@@ -98,7 +98,7 @@ st.write(f"Total mentions for {group_option} countries in {selected_year}: {int(
 
 # Create a word cloud based on the individual words in 'Summary Topics' for the selected year
 st.header("Keywords from the top topics in this year")
-words_to_remove = ['united states', 'united states of america', 'national security strategy', 'national', 'security', 'strategy', 'america', 'american']
+words_to_remove = ['united states', 'united states of america', 'united', 'states','national security strategy', 'national', 'security', 'strategy', 'america', 'american']
 summary_topics = ' '.join(year_filtered_df['Summary_Topics'].str.split(',').explode())
 summary_topics = ' '.join([word for word in summary_topics.split() if word.lower() not in words_to_remove])
 wordcloud = WordCloud(stopwords=STOPWORDS, background_color='white', width=800, height=400).generate(summary_topics)
