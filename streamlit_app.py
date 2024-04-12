@@ -1,8 +1,12 @@
 import streamlit as st
 import pandas as pd
+import pydeck as pdk
 
 # Load the data into a Pandas DataFrame
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Country.csv')
+
+# Ensure you have latitude and longitude in your DataFrame
+# You might have to modify this URL or your DataFrame to include these columns
 
 # Dashboard Header and Layout
 st.title('Countries Mentioned in US National Security Strategy Document')
@@ -24,5 +28,22 @@ if country_option == 'Exclude United States':
 else:
     filtered_df = year_filtered_df
 
-# Use Streamlit's built-in bar chart to display the data
-st.bar_chart(filtered_df.groupby('Country')['Count'].sum())
+# Assuming 'Latitude' and 'Longitude' columns exist in your DataFrame
+# Prepare data for the heatmap
+heatmap_data = filtered_df.groupby(['Latitude', 'Longitude', 'Country']).sum().reset_index()
+
+# Define a layer for the heatmap
+layer = pdk.Layer(
+    'HeatmapLayer',
+    data=heatmap_data,
+    opacity=0.9,
+    get_position=['Longitude', 'Latitude'],
+    get_weight='Count',
+    radius_pixels=60
+)
+
+# Set the viewport location
+view_state = pdk.ViewState(latitude=heatmap_data['Latitude'].mean(), longitude=heatmap_data['Longitude'].mean(), zoom=1)
+
+# Render the deck.gl map
+st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state))
