@@ -5,14 +5,8 @@ import pydeck as pdk
 # Load the data into a Pandas DataFrame
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
 
-# Definitions of G-5 and G-20 countries
-G5_countries = ['United States', 'United Kingdom', 'France', 'Germany', 'Japan']
-G20_countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany', 
-                 'India', 'Indonesia', 'Italy', 'Japan', 'Mexico', 'Russian Federation', 'Saudi Arabia', 
-                 'South Africa', 'Korea, Republic of', 'Turkey', 'United Kingdom', 'United States', 'European Union']
-
 # Dashboard Header and Layout
-st.title('Countries Mentioned in US National Security Strategy Document')
+st.title('Countries Mentioned in the US National Security Strategy Document')
 
 # Use a slider for selecting the year
 min_year = int(df['Year'].min())
@@ -22,22 +16,37 @@ selected_year = st.slider('Select a year:', min_value=min_year, max_value=max_ye
 # Filter data based on selected year
 year_filtered_df = df[df['Year'] == selected_year]
 
-# Filter data for G-5 and G-20 countries
-G5_df = year_filtered_df[year_filtered_df['Country'].isin(G5_countries)]
-G20_df = year_filtered_df[year_filtered_df['Country'].isin(G20_countries)]
+# Add a country filter with specific options
+country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
 
-# Calculate the total counts for the year
-total_count_year = year_filtered_df['Count'].sum()
+# Filter data based on country selection
+if country_option == 'Exclude United States':
+    filtered_df = year_filtered_df[year_filtered_df['Country'] != 'United States']
+else:
+    filtered_df = year_filtered_df
 
-# Calculate percentages for G-5 and G-20 countries
-G5_percentage = G5_df.groupby('Country')['Count'].sum() / total_count_year * 100
-G20_percentage = G20_df.groupby('Country')['Count'].sum() / total_count_year * 100
+# Assuming 'Latitude' and 'Longitude' columns exist in your DataFrame
+# Prepare data for the heatmap
+heatmap_data = filtered_df.groupby(['Latitude', 'Longitude', 'Country']).sum().reset_index()
 
-# Display pie charts using Streamlit
-st.header("G-5 Countries' Mention Percentages")
-st.bar_chart(G5_percentage)
+# Define a layer for the heatmap
+layer = pdk.Layer(
+    'HeatmapLayer',
+    data=heatmap_data,
+    opacity=0.9,
+    get_position=['Longitude', 'Latitude'],
+    get_weight='Count',
+    radius_pixels=60
+)
 
-st.header("G-20 Countries' Mention Percentages")
-st.bar_chart(G20_percentage)
+# Set the viewport location
+view_state = pdk.ViewState(latitude=heatmap_data['Latitude'].mean(), longitude=heatmap_data['Longitude'].mean(), zoom=1)
+
+# Render the deck.gl map
+st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state))
+
+# Use Streamlit's built-in bar chart to display the data, grouping by country and summing counts
+bar_chart_data = filtered_df.groupby('Country')['Count'].sum()
+st.bar_chart(bar_chart_data)
 
 
