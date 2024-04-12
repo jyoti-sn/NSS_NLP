@@ -12,7 +12,8 @@ G20_countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France'
                  'South Africa', 'Korea, Republic of', 'Turkey', 'United Kingdom', 'United States', 'European Union']
 
 # Dashboard Header and Layout
-st.title('Countries in the US National Security Strategy Document')
+st.title('How does the white house see the world?')
+st.subheader("Analysis of the US National Security Strategy Document")
 
 # Use a slider for selecting the year, limited to available years in the data
 available_years = df['Year'].unique()
@@ -26,7 +27,7 @@ year_filtered_df = df[df['Year'] == selected_year]
 country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
 
 # Apply US filter to the dataframe
-if country_option == 'Exclude the United States':
+if country_option == 'Exclude United States':
     year_filtered_df = year_filtered_df[year_filtered_df['Country'] != 'United States']
 
 # Group Selection for G-5 or G-20
@@ -55,10 +56,13 @@ layer = pdk.Layer(
 view_state = pdk.ViewState(latitude=heatmap_data['Latitude'].mean(), longitude=heatmap_data['Longitude'].mean(), zoom=1)
 st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state))
 
+# Bar chart for all country counts
+st.header("Total Mentions by Country")
 bar_chart_data = year_filtered_df.groupby('Country')['Count'].sum()
 st.bar_chart(bar_chart_data)
 
 # Display group specific data
 st.header(f"{group_option} Countries' Mention Percentages")
 st.bar_chart(group_percentage)
+
 
