@@ -66,6 +66,10 @@ st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state))
 
 # Bar chart for all country counts
 st.header("Total Mentions by Country")
-st.bar_chart(year_filtered_df.groupby('
+st.bar_chart(year_filtered_df.groupby('Country')['Count'].sum())
+
+# Display group specific data
+st.header(f"{group_option} Countries' Mention Percentages")
+st.bar_chart(group_percentage)
 
 
