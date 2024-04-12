@@ -22,16 +22,21 @@ selected_year = st.slider('Select a year:', min_value=min(available_years), max_
 # Filter data based on selected year
 year_filtered_df = df[df['Year'] == selected_year]
 
+# Country filter for excluding or including the United States
+country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
+
+# Apply US filter to the dataframe
+if country_option == 'Exclude United States':
+    year_filtered_df = year_filtered_df[year_filtered_df['Country'] != 'United States']
+
 # Group Selection for G-5 or G-20
 group_option = st.radio("Select Group:", ('G-5', 'G-20'))
 
 # Apply group filter
 if group_option == 'G-5':
     group_df = year_filtered_df[year_filtered_df['Country'].isin(G5_countries)]
-    group_countries = G5_countries
 else:
     group_df = year_filtered_df[year_filtered_df['Country'].isin(G20_countries)]
-    group_countries = G20_countries
 
 # Calculate the total counts for the year and for each group
 total_count_year = year_filtered_df['Count'].sum()
@@ -56,5 +61,4 @@ st.bar_chart(bar_chart_data)
 # Display group specific data
 st.header(f"{group_option} Countries' Mention Percentages")
 st.bar_chart(group_percentage)
-
 
