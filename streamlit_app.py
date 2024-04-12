@@ -154,6 +154,6 @@ with st.sidebar:
     st.subheader("Word Frequency Over Time")
     search_word = st.text_input("Enter a word to search:")
     if search_word:
-        word_frequencies = df.groupby('Year')['Summary Topics'].str.contains(search_word, case=False).sum()
+        word_frequencies = df.groupby('Year')['Summary_Topics'].str.contains(search_word, case=False).sum()
         st.line_chart(word_frequencies)
         st.write(f"The frequency of the word '{search_word}' in the 'Summary Topics' column over the years.")
