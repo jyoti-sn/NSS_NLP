@@ -5,31 +5,40 @@ import pydeck as pdk
 # Load the data into a Pandas DataFrame
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
 
-# Dashboard Header and Layout
-st.title('Countries Mentioned in the US National Security Strategy Document')
+# Definitions of G-5 and G-20 countries
+G5_countries = ['United States', 'United Kingdom', 'France', 'Germany', 'Japan']
+G20_countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany', 
+                 'India', 'Indonesia', 'Italy', 'Japan', 'Mexico', 'Russian Federation', 'Saudi Arabia', 
+                 'South Africa', 'Korea, Republic of', 'Turkey', 'United Kingdom', 'United States', 'European Union']
 
-# Use a slider for selecting the year
-min_year = int(df['Year'].min())
-max_year = int(df['Year'].max())
-selected_year = st.slider('Select a year:', min_value=min_year, max_value=max_year, value=min_year, step=1)
+# Dashboard Header and Layout
+st.title('Countries in the US National Security Strategy Document')
+
+# Use a slider for selecting the year, limited to available years in the data
+available_years = df['Year'].unique()
+available_years.sort()
+selected_year = st.slider('Select a year:', min_value=min(available_years), max_value=max(available_years), value=min(available_years))
 
 # Filter data based on selected year
 year_filtered_df = df[df['Year'] == selected_year]
 
-# Add a country filter with specific options
-country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
+# Group Selection for G-5 or G-20
+group_option = st.radio("Select Group:", ('G-5', 'G-20'))
 
-# Filter data based on country selection
-if country_option == 'Exclude United States':
-    filtered_df = year_filtered_df[year_filtered_df['Country'] != 'United States']
+# Apply group filter
+if group_option == 'G-5':
+    group_df = year_filtered_df[year_filtered_df['Country'].isin(G5_countries)]
+    group_countries = G5_countries
 else:
-    filtered_df = year_filtered_df
+    group_df = year_filtered_df[year_filtered_df['Country'].isin(G20_countries)]
+    group_countries = G20_countries
 
-# Assuming 'Latitude' and 'Longitude' columns exist in your DataFrame
-# Prepare data for the heatmap
-heatmap_data = filtered_df.groupby(['Latitude', 'Longitude', 'Country']).sum().reset_index()
+# Calculate the total counts for the year and for each group
+total_count_year = year_filtered_df['Count'].sum()
+group_percentage = group_df.groupby('Country')['Count'].sum() / total_count_year * 100
 
-# Define a layer for the heatmap
+# Display the heatmap and bar chart for all countries
+heatmap_data = year_filtered_df.groupby(['Latitude', 'Longitude', 'Country']).sum().reset_index()
 layer = pdk.Layer(
     'HeatmapLayer',
     data=heatmap_data,
@@ -38,15 +47,14 @@ layer = pdk.Layer(
     get_weight='Count',
     radius_pixels=60
 )
-
-# Set the viewport location
 view_state = pdk.ViewState(latitude=heatmap_data['Latitude'].mean(), longitude=heatmap_data['Longitude'].mean(), zoom=1)
-
-# Render the deck.gl map
 st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state))
 
-# Use Streamlit's built-in bar chart to display the data, grouping by country and summing counts
-bar_chart_data = filtered_df.groupby('Country')['Count'].sum()
+bar_chart_data = year_filtered_df.groupby('Country')['Count'].sum()
 st.bar_chart(bar_chart_data)
+
+# Display group specific data
+st.header(f"{group_option} Countries' Mention Percentages")
+st.bar_chart(group_percentage)
 
 
