@@ -51,7 +51,6 @@ with st.sidebar:
     st.subheader("Country Correlation Analysis")
     country1 = st.selectbox("Select Country 1", df['Country'].unique())
     country2 = st.selectbox("Select Country 2", df['Country'].unique())
-    corr_type = st.radio("Correlation Type", ('Pearson', 'Spearman'))
 
 # Filter data based on selected year
 year_filtered_df = df[df['Year'] == selected_year]
@@ -121,29 +120,16 @@ with st.sidebar:
     if country1 != country2:
         country1_data = df[df['Country'] == country1]['Count']
         country2_data = df[df['Country'] == country2]['Count']
-
-        if corr_type == 'Pearson':
-            corr, p_value = stats.pearsonr(country1_data, country2_data)
-        else:
-            corr, p_value = stats.spearmanr(country1_data, country2_data)
+        corr, p_value = stats.pearsonr(country1_data, country2_data)
 
         if abs(corr) >= 0.7:
-            if corr > 0:
-                corr_description = "Very strong positive correlation"
-            else:
-                corr_description = "Very strong negative correlation"
+            corr_description = "Very strong correlation"
         elif abs(corr) >= 0.5:
-            if corr > 0:
-                corr_description = "Strong positive correlation"
-            else:
-                corr_description = "Strong negative correlation"
+            corr_description = "Strong correlation"
         elif abs(corr) >= 0.3:
-            if corr > 0:
-                corr_description = "Weak positive correlation"
-            else:
-                corr_description = "Weak negative correlation"
+            corr_description = "Moderate correlation"
         else:
-            corr_description = "No significant correlation"
+            corr_description = "Weak or no correlation"
 
         st.write(f"The correlation between {country1} and {country2} is {corr_description} with a correlation coefficient of {corr:.2f} and a p-value of {p_value:.2f}.")
     else:
