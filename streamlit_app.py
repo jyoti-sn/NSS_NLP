@@ -26,7 +26,7 @@ year_filtered_df = df[df['Year'] == selected_year]
 country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
 
 # Apply US filter to the dataframe
-if country_option == 'Exclude United States':
+if country_option == 'Exclude the United States':
     year_filtered_df = year_filtered_df[year_filtered_df['Country'] != 'United States']
 
 # Group Selection for G-5 or G-20
