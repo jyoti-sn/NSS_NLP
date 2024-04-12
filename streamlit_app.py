@@ -3,6 +3,8 @@ import pandas as pd
 import pydeck as pdk
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
+import numpy as np
+import scipy.stats as stats
 
 # Load the data into Pandas DataFrames
 df1 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
@@ -32,10 +34,24 @@ st.set_page_config(layout="wide", page_title="How does the white house see the w
 st.title('How does the white house see the world?')
 st.subheader("Analysis of the US National Security Strategy Document")
 
-# Use a slider for selecting the year
-available_years = df['Year'].unique()
-available_years.sort()
-selected_year = st.sidebar.slider('Select a year:', min_value=min(available_years), max_value=max(available_years), value=min(available_years))
+# Sidebar layout
+with st.sidebar:
+    # Use a slider for selecting the year
+    available_years = df['Year'].unique()
+    available_years.sort()
+    selected_year = st.slider('Select a year:', min_value=min(available_years), max_value=max(available_years), value=min(available_years))
+
+    # Country filter for excluding or including the United States
+    country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
+
+    # Group Selection for G-5 or G-20
+    group_option = st.radio("Select Group:", ('G-5', 'G-20'))
+
+    # Country correlation analysis
+    st.subheader("Country Correlation Analysis")
+    country1 = st.selectbox("Select Country 1", df['Country'].unique())
+    country2 = st.selectbox("Select Country 2", df['Country'].unique())
+    corr_type = st.radio("Correlation Type", ('Pearson', 'Spearman'))
 
 # Filter data based on selected year
 year_filtered_df = df[df['Year'] == selected_year]
@@ -45,15 +61,9 @@ president_info = presidents_df[presidents_df['Year'] == selected_year]
 if not president_info.empty:
     st.write(f"President in {selected_year}: {president_info['President'].values[0]} ({president_info['Party'].values[0]} Party)")
 
-# Country filter for excluding or including the United States
-country_option = st.sidebar.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
-
 # Apply US filter to the dataframe
 if country_option == 'Exclude United States':
     year_filtered_df = year_filtered_df[year_filtered_df['Country'] != 'United States']
-
-# Group Selection for G-5 or G-20
-group_option = st.sidebar.radio("Select Group:", ('G-5', 'G-20'))
 
 # Apply group filter
 if group_option == 'G-5':
@@ -105,3 +115,45 @@ fig, ax = plt.subplots(figsize=(10, 6))
 ax.imshow(wordcloud, interpolation='bilinear')
 ax.axis('off')
 st.pyplot(fig)
+
+# Country correlation analysis
+with st.sidebar:
+    if country1 != country2:
+        country1_data = df[df['Country'] == country1]['Count']
+        country2_data = df[df['Country'] == country2]['Count']
+
+        if corr_type == 'Pearson':
+            corr, p_value = stats.pearsonr(country1_data, country2_data)
+        else:
+            corr, p_value = stats.spearmanr(country1_data, country2_data)
+
+        if abs(corr) >= 0.7:
+            if corr > 0:
+                corr_description = "Very strong positive correlation"
+            else:
+                corr_description = "Very strong negative correlation"
+        elif abs(corr) >= 0.5:
+            if corr > 0:
+                corr_description = "Strong positive correlation"
+            else:
+                corr_description = "Strong negative correlation"
+        elif abs(corr) >= 0.3:
+            if corr > 0:
+                corr_description = "Weak positive correlation"
+            else:
+                corr_description = "Weak negative correlation"
+        else:
+            corr_description = "No significant correlation"
+
+        st.write(f"The correlation between {country1} and {country2} is {corr_description} with a correlation coefficient of {corr:.2f} and a p-value of {p_value:.2f}.")
+    else:
+        st.write("Please select two different countries to perform the correlation analysis.")
+
+# Word frequency line chart
+with st.sidebar:
+    st.subheader("Word Frequency Over Time")
+    search_word = st.text_input("Enter a word to search:")
+    if search_word:
+        word_frequencies = df.groupby('Year')['Summary Topics'].str.contains(search_word, case=False).sum()
+        st.line_chart(word_frequencies)
+        st.write(f"The frequency of the word '{search_word}' in the 'Summary Topics' column over the years.")
