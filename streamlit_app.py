@@ -98,7 +98,7 @@ st.write(f"Total mentions for {group_option} countries in {selected_year}: {int(
 
 # Create a word cloud based on the 'Summary Topics' for the selected year
 st.header("Top topics mentioned in this year")
-summary_topics = year_filtered_df['Summary Topics'].str.split(',').explode().value_counts()
+summary_topics = year_filtered_df['Summary_Topics'].str.split(',').explode().value_counts()
 wordcloud = WordCloud(stopwords=STOPWORDS, background_color='white', width=800, height=400).generate_from_frequencies(summary_topics)
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.imshow(wordcloud, interpolation='bilinear')
