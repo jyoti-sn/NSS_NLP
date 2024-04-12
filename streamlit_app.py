@@ -3,7 +3,7 @@ import pandas as pd
 import pydeck as pdk
 
 # Load the data into a Pandas DataFrame
-df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Country_updated.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
 
 # Dashboard Header and Layout
 st.title('Countries Mentioned in US National Security Strategy Document')
