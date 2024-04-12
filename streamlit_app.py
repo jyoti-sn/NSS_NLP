@@ -131,8 +131,6 @@ df2 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_S
 # Merge the DataFrames on the 'Year' column
 df = pd.merge(df1, df2, on='Year')
 
-# ... <rest of code is the same as before> ...
-
 # Country correlation analysis
 with st.sidebar:
     if country1 != country2:
