@@ -45,10 +45,7 @@ view_state = pdk.ViewState(latitude=heatmap_data['Latitude'].mean(), longitude=h
 # Render the deck.gl map
 st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state))
 
-# Additional visualization for line chart
-# Preparing data for line chart visualization
-line_chart_data = df.pivot_table(index='Year', columns='Country', values='Count', aggfunc='sum').fillna(0)
-
-# Display line chart
-st.line_chart(line_chart_data)
+# Use Streamlit's built-in bar chart to display the data, grouping by country and summing counts
+bar_chart_data = filtered_df.groupby('Country')['Count'].sum()
+st.bar_chart(bar_chart_data)
 
