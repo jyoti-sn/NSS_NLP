@@ -65,7 +65,7 @@ else:
 total_count_year = year_filtered_df['Count'].sum()
 group_percentage = group_df.groupby('Country')['Count'].sum() / total_count_year * 100
 
-# Display the heatmap and bar chart for all countries
+# Display the heatmap
 heatmap_data = year_filtered_df.groupby(['Latitude', 'Longitude', 'Country']).sum().reset_index()
 layer = pdk.Layer(
     'HeatmapLayer',
@@ -77,28 +77,27 @@ layer = pdk.Layer(
 )
 view_state = pdk.ViewState(latitude=heatmap_data['Latitude'].mean(), longitude=heatmap_data['Longitude'].mean(), zoom=1)
 
-# Display the heatmap and bar chart
+st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state, tooltip={
+    "html": "<b>{Country}</b><br>Mentions: {Count}",
+    "style": {"color": "white", "font-family": "Arial", "font-size": "12px", "padding": "10px"}
+}))
+
+# Display the bar charts
 col1, col2 = st.columns(2)
 with col1:
-    st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state, tooltip={
-        "html": "<b>{Country}</b><br>Mentions: {Count}",
-        "style": {"color": "white", "font-family": "Arial", "font-size": "12px", "padding": "10px"}
-    }))
-
-with col2:
     st.header("Total Mentions by Country")
     bar_chart_data = year_filtered_df.groupby('Country')['Count'].sum()
     st.bar_chart(bar_chart_data, use_container_width=True)
     st.write(f"Total mentions in {selected_year}: {int(total_count_year)}")
 
-# Display group specific data
-st.header(f"{group_option} Countries' Mention Percentages")
-group_percentage_chart = st.bar_chart(group_percentage, use_container_width=True)
-st.write(f"Total mentions for {group_option} countries in {selected_year}: {int(group_df['Count'].sum())}")
+with col2:
+    st.header(f"{group_option} Countries' Mention Percentages")
+    group_percentage_chart = st.bar_chart(group_percentage, use_container_width=True)
+    st.write(f"Total mentions for {group_option} countries in {selected_year}: {int(group_df['Count'].sum())}")
 
 # Create a word cloud based on the individual words in 'Summary Topics' for the selected year
-st.header("Keywords from the top topics in this year")
-words_to_remove = ['united states', 'united states of america', 'united', 'states','national security strategy', 'national', 'security', 'strategy', 'america', 'american']
+st.header("Top topics mentioned in this year")
+words_to_remove = ['united states', 'united states of america', 'national security strategy', 'national', 'security', 'strategy', 'america', 'american']
 summary_topics = ' '.join(year_filtered_df['Summary_Topics'].str.split(',').explode())
 summary_topics = ' '.join([word for word in summary_topics.split() if word.lower() not in words_to_remove])
 wordcloud = WordCloud(stopwords=STOPWORDS, background_color='white', width=800, height=400).generate(summary_topics)
