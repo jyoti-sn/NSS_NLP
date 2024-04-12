@@ -115,21 +115,6 @@ ax.imshow(wordcloud, interpolation='bilinear')
 ax.axis('off')
 st.pyplot(fig)
 
-# Country correlation analysis
-import streamlit as st
-import pandas as pd
-import pydeck as pdk
-from wordcloud import WordCloud, STOPWORDS
-import matplotlib.pyplot as plt
-import numpy as np
-import scipy.stats as stats
-
-# Load the data into Pandas DataFrames
-df1 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
-df2 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Summary_Topics.csv')
-
-# Merge the DataFrames on the 'Year' column
-df = pd.merge(df1, df2, on='Year')
 
 # Country correlation analysis
 with st.sidebar:
@@ -161,7 +146,6 @@ with st.sidebar:
     st.subheader("Word Frequency Over Time")
     search_word = st.text_input("Enter a word to search:")
     if search_word:
-        word_counts = df2[df2['Summary_Topics'].str.contains(search_word, case=False)].groupby('Year').size()
-        st.line_chart(word_counts, x='Year')
-
+        word_counts = df[df['Summary_Topics'].str.contains(search_word, case=False)].groupby('Year').size()
+        st.line_chart(word_counts)  # Set 'Year' as x-axis
         st.write(f"The frequency of the word '{search_word}' in the 'Summary Topics' column over the years.")
