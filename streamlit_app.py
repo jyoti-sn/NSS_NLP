@@ -6,7 +6,7 @@ import pydeck as pdk
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
 
 # Dashboard Header and Layout
-st.title('Countries Mentioned in US National Security Strategy Document')
+st.title('Countries Mentioned in the US National Security Strategy Document')
 
 # Use a slider for selecting the year
 min_year = int(df['Year'].min())
