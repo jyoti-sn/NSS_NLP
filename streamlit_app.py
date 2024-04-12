@@ -96,10 +96,10 @@ st.header(f"{group_option} Countries' Mention Percentages")
 group_percentage_chart = st.bar_chart(group_percentage, use_container_width=True)
 st.write(f"Total mentions for {group_option} countries in {selected_year}: {int(group_df['Count'].sum())}")
 
-# Create a word cloud based on the 'Summary Topics' for the selected year
+# Create a word cloud based on the individual words in 'Summary Topics' for the selected year
 st.header("Top topics mentioned in this year")
-summary_topics = year_filtered_df['Summary_Topics'].str.split(',').explode().value_counts()
-wordcloud = WordCloud(stopwords=STOPWORDS, background_color='white', width=800, height=400).generate_from_frequencies(summary_topics)
+summary_topics = ' '.join(year_filtered_df['Summary_Topics'].str.split(',').explode())
+wordcloud = WordCloud(stopwords=STOPWORDS, background_color='white', width=800, height=400).generate(summary_topics)
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.imshow(wordcloud, interpolation='bilinear')
 ax.axis('off')
