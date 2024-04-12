@@ -3,7 +3,7 @@ import pandas as pd
 import pydeck as pdk
 
 # Load the data into a Pandas DataFrame
-df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Country.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
 
 # Ensure you have latitude and longitude in your DataFrame
 # You might have to modify this URL or your DataFrame to include these columns
