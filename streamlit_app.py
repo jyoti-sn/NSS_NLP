@@ -5,13 +5,6 @@ import pydeck as pdk
 # Load the data into a Pandas DataFrame
 df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
 
-import streamlit as st
-import pandas as pd
-import pydeck as pdk
-
-# Load the data into a Pandas DataFrame
-df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Country.csv')
-
 # Presidential DataFrame
 presidents_df = pd.DataFrame({
     "Year": list(range(1987, 1989)) + list(range(1989, 1993)) + list(range(1993, 2001)) + list(range(2001, 2009)) + 
@@ -22,7 +15,12 @@ presidents_df = pd.DataFrame({
              ["Democratic"] * 8 + ["Republican"] * 4 + ["Democratic"] * 4
 })
 
-# Dashboard Header and Layout
+# Definitions of G-5 and G-20 countries
+G5_countries = ['United States', 'United Kingdom', 'France', 'Germany', 'Japan']
+G20_countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany', 
+                 'India', 'Indonesia', 'Italy', 'Japan', 'Mexico', 'Russian Federation', 'Saudi Arabia', 
+                 'South Africa', 'Korea, Republic of', 'Turkey', 'United Kingdom', 'United States', 'European Union']
+
 # Dashboard Header and Layout
 st.title('How does the white house see the world?')
 st.subheader("Analysis of the US National Security Strategy Document")
@@ -32,27 +30,14 @@ available_years = df['Year'].unique()
 available_years.sort()
 selected_year = st.slider('Select a year:', min_value=min(available_years), max_value=max(available_years), value=min(available_years))
 
+# Filter data based on selected year
+year_filtered_df = df[df['Year'] == selected_year]
+
 # Display Presidential Information
 president_info = presidents_df[presidents_df['Year'] == selected_year]
 if not president_info.empty:
     st.write(f"President in {selected_year}: {president_info['President'].values[0]} ({president_info['Party'].values[0]} Party)")
 
-# Remaining app code continues...
-
-
-# Definitions of G-5 and G-20 countries
-G5_countries = ['United States', 'United Kingdom', 'France', 'Germany', 'Japan']
-G20_countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany', 
-                 'India', 'Indonesia', 'Italy', 'Japan', 'Mexico', 'Russian Federation', 'Saudi Arabia', 
-                 'South Africa', 'Korea, Republic of', 'Turkey', 'United Kingdom', 'United States', 'European Union']
-
-# Use a slider for selecting the year, limited to available years in the data
-available_years = df['Year'].unique()
-available_years.sort()
-selected_year = st.slider('Select a year:', min_value=min(available_years), max_value=max(available_years), value=min(available_years))
-
-# Filter data based on selected year
-year_filtered_df = df[df['Year'] == selected_year]
 
 # Country filter for excluding or including the United States
 country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
