@@ -3,10 +3,7 @@ import pandas as pd
 import pydeck as pdk
 
 # Load the data into a Pandas DataFrame
-df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_updated.csv')
-
-# Ensure you have latitude and longitude in your DataFrame
-# You might have to modify this URL or your DataFrame to include these columns
+df = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_Country_updated.csv')
 
 # Dashboard Header and Layout
 st.title('Countries Mentioned in US National Security Strategy Document')
@@ -47,3 +44,11 @@ view_state = pdk.ViewState(latitude=heatmap_data['Latitude'].mean(), longitude=h
 
 # Render the deck.gl map
 st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state))
+
+# Additional visualization for line chart
+# Preparing data for line chart visualization
+line_chart_data = df.pivot_table(index='Year', columns='Country', values='Count', aggfunc='sum').fillna(0)
+
+# Display line chart
+st.line_chart(line_chart_data)
+
