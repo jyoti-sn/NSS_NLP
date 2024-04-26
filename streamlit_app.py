@@ -137,8 +137,8 @@ if search_word:
         republican_percentage = (republican_mentions / total_mentions) * 100
         democratic_percentage = (democratic_mentions / total_mentions) * 100
 
-        # Display likelihood in large font
-        st.markdown(f"Republican: {republican_percentage:.1f}%", unsafe_allow_html=True)
-        st.markdown(f"Democratic: {democratic_percentage:.1f}%", unsafe_allow_html=True)
+        # Display likelihood in large, bold font
+        st.markdown(f"<div style='font-size: 24px; font-weight: bold;'>Republican: {republican_percentage:.1f}%</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='font-size: 24px; font-weight: bold;'>Democratic: {democratic_percentage:.1f}%</div>", unsafe_allow_html=True)
     else:
         st.write("The word was not found in the dataset.")
