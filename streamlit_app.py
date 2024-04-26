@@ -115,12 +115,46 @@ with col4:
     st.subheader("Mention Percentage")
     st.bar_chart(continent_percentage, use_container_width=True)
 
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+# Assuming 'df' is the merged dataframe with columns 'Year', 'Text', and 'Party'
+
+# Dashboard Header and Layout
+st.set_page_config(layout="wide", page_title="How does the white house see the world?")
+st.title('How does the white house see the world?')
+st.subheader("Analysis of the US National Security Strategy Document")
+
+# Sidebar layout
+with st.sidebar:
+    search_word = st.text_input("Enter a word to search:").lower()
+
 # Word search over time
-st.subheader("Word Frequency Over Time")
-search_word = st.text_input("Enter a word to search:").lower()
 if search_word:
-    word_counts = df[df['Text'].str.contains(search_word, case=False)].groupby('Year')['Text'].count().reset_index()
-    st.line_chart(data=word_counts, x='Year', y='Text')
+    st.subheader("Word Frequency Over Time")
+    df['Word Count'] = df['Text'].apply(lambda text: text.count(search_word))
+    word_counts = df.groupby('Year')['Word Count'].sum().reset_index()
+
+    # Calculate the correlation with political party
+    df['Republican'] = df['Party'].apply(lambda x: 1 if x == 'Republican' else 0)
+    df['Democratic'] = df['Party'].apply(lambda x: 1 if x == 'Democratic' else 0)
+    rep_correlation = np.corrcoef(df['Word Count'], df['Republican'])[0, 1]
+    dem_correlation = np.corrcoef(df['Word Count'], df['Democratic'])[0, 1]
+
+    # Convert correlations to likelihood (percentage format)
+    total = abs(rep_correlation) + abs(dem_correlation)
+    rep_likelihood = (abs(rep_correlation) / total) * 100
+    dem_likelihood = (abs(dem_correlation) / total) * 100
+
+    # Displaying the chart
+    st.line_chart(data=word_counts, x='Year', y='Word Count')
+
+    # Show likelihood in big font
+    col1, col2 = st.columns(2)
+    col1.markdown(f"<h1 style='text-align: center; color: red;'>{rep_likelihood:.2f}% Republican</h1>", unsafe_allow_html=True)
+    col2.markdown(f"<h1 style='text-align: center; color: blue;'>{dem_likelihood:.2f}% Democratic</h1>", unsafe_allow_html=True)
+
     st.write(f"The frequency of the word '{search_word}' in the 'Text' column over the years.")
 
 # Methodology
