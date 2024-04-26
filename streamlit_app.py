@@ -116,8 +116,8 @@ with col4:
 st.subheader("Word Frequency Over Time")
 search_word = st.text_input("Enter a word to search:").lower()
 if search_word:
-    word_counts = df[df['Text'].str.contains(search_word, case=False)].groupby('Year').size()
-    st.line_chart(word_counts.rename_axis('Year'))  # Set 'Year' as x-axis without commas
+    word_counts = df[df['Text'].str.contains(search_word, case=False)].groupby('Year').size().reset_index()
+    st.line_chart(data=word_counts, x='Year', y='size')
     st.write(f"The frequency of the word '{search_word}' in the 'Text' column over the years.")
 
 # Methodology
