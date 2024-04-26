@@ -121,7 +121,7 @@ search_word = st.text_input("Enter a word to search:").lower()
 if search_word:
     word_counts = df[df['Text'].str.contains(search_word, case=False)].groupby('Year')['Text'].count().reset_index()
     st.line_chart(data=word_counts, x='Year', y='Text')
-    st.write(f"The frequency of the word '{search_word}' in the 'Text' column over the years.")
+    st.write(f"The frequency of the word '{search_word}' in the NSS documents over the years.")
 
     # Calculate correlation with party (normalized)
     merged_df = pd.merge(df, presidents_df, on='Year')
