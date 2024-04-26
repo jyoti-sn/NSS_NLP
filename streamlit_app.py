@@ -35,7 +35,7 @@ G20_countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France'
 # Dashboard Header and Layout
 st.set_page_config(layout="wide", page_title="How does the white house see the world?")
 st.title('How does the white house see the world?')
-st.subheader("Analysis of the US National Security Strategy Document")
+st.subheader("Analysis of the US National Security Strategy Document: 1987-2022")
 
 # Sidebar layout
 with st.sidebar:
