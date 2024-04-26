@@ -118,6 +118,7 @@ with col4:
     st.subheader("Mention Percentage")
     st.bar_chart(continent_percentage, use_container_width=True)
 
+
 # Word search over time
 st.subheader("Word Frequency Over Time")
 search_word = st.text_input("Enter a word to search:").lower()
