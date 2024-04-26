@@ -7,6 +7,9 @@ import re
 df1 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_coded_Google.csv')
 df2 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/US_NSS_Full_Texts.csv')
 
+# Convert 'Year' column in df2 to datetime and then to year data type
+df2['Year'] = pd.to_datetime(df2['Year'], format='%Y').dt.year
+
 # Merge the DataFrames on the 'Year' column
 df = pd.merge(df1, df2, on='Year')
 
@@ -116,8 +119,8 @@ with col4:
 st.subheader("Word Frequency Over Time")
 search_word = st.text_input("Enter a word to search:").lower()
 if search_word:
-    word_counts = df[df['Text'].str.contains(search_word, case=False)].groupby('Year').size().reset_index()
-    st.line_chart(data=word_counts, x='Year', y='size')
+    word_counts = df[df['Text'].str.contains(search_word, case=False)].groupby('Year')['Text'].count().reset_index()
+    st.line_chart(data=word_counts, x='Year', y='Text')
     st.write(f"The frequency of the word '{search_word}' in the 'Text' column over the years.")
 
 # Methodology
