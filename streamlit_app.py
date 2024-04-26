@@ -131,7 +131,17 @@ if search_word:
     democratic_word_counts = word_counts[word_counts['Party'] == 'Democratic']['Text'].sum()
     total_word_counts = republican_word_counts + democratic_word_counts
 
-    republican_percentage = (republican_word_counts / total_word_counts
+    republican_percentage = (republican_word_counts / total_word_counts) * 100
+    democratic_percentage = (democratic_word_counts / total_word_counts) * 100
+
+    st.write(f"The word '{search_word}' is more likely to appear in:")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(f"<h1 style='color:red;'>{republican_percentage:.2f}%</h1>", unsafe_allow_html=True)
+        st.write("Republican Administration")
+    with col2:
+        st.markdown(f"<h1 style='color:blue;'>{democratic_percentage:.2f}%</h1>", unsafe_allow_html=True)
+        st.write("Democratic Administration")
 
 # Methodology
 st.header("Methodology")
