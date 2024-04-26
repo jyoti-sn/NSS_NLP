@@ -5,7 +5,7 @@ import re
 
 # Load the data into Pandas DataFrames
 df1 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_coded_Google.csv')
-df2 = pd.read_csv('https://raw.githubusercontent.com/your-github-repo/path/to/new_data.csv')
+df2 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/US_NSS_Full_Texts.csv')
 
 # Merge the DataFrames on the 'Year' column
 df = pd.merge(df1, df2, on='Year')
