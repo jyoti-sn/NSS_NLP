@@ -34,16 +34,13 @@ st.set_page_config(layout="wide", page_title="How does the white house see the w
 st.title('How does the white house see the world?')
 st.subheader("Analysis of the US National Security Strategy Document")
 
-# Sidebar layout
-with st.sidebar:
-    # Use a slider for selecting the year
-    selected_year = st.select_slider('Select a year:', options=presidents_df['Year'].unique())
-
-    # Country filter for excluding or including the United States
-    country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
-
-    # Group Selection for G-5 or G-20
-    group_option = st.radio("Select Group:", ('G-5', 'G-20'))
+# Definitions of G-5 and G-20 countries
+G5_countries = ['United States', 'United Kingdom', 'France', 'Germany', 'Japan']
+G20_countries = [
+    'Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany',
+    'India', 'Indonesia', 'Italy', 'Japan', 'Mexico', 'Russian Federation', 'Saudi Arabia',
+    'South Africa', 'Korea, Republic of', 'Turkey', 'United Kingdom', 'United States', 'European Union'
+]
 
 # Filter data based on selected year
 year_filtered_df = df[df['Year'] == selected_year]
@@ -57,6 +54,19 @@ if group_option == 'G-5':
     group_df = year_filtered_df[year_filtered_df['Country'].isin(G5_countries)]
 else:
     group_df = year_filtered_df[year_filtered_df['Country'].isin(G20_countries)]
+
+
+# Sidebar layout
+with st.sidebar:
+    # Use a slider for selecting the year
+    selected_year = st.select_slider('Select a year:', options=presidents_df['Year'].unique())
+
+    # Country filter for excluding or including the United States
+    country_option = st.selectbox('Filter countries:', ['All Countries', 'Exclude United States'])
+
+    # Group Selection for G-5 or G-20
+    group_option = st.radio("Select Group:", ('G-5', 'G-20'))
+
 
 # Continent analysis
 continent_data = year_filtered_df.groupby('Continent')['Count'].sum()
