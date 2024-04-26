@@ -1,10 +1,6 @@
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
-from wordcloud import WordCloud, STOPWORDS
-import matplotlib.pyplot as plt
-import numpy as np
-import scipy.stats as stats
 
 # Load the data into Pandas DataFrames
 df1 = pd.read_csv('https://raw.githubusercontent.com/jyoti-sn/NSS_NLP/main/NSS_country_coded_Google.csv')
@@ -37,8 +33,7 @@ st.subheader("Analysis of the US National Security Strategy Document")
 # Sidebar layout
 with st.sidebar:
     # Use a slider for selecting the year
-    available_years = df['Year'].unique()
-    available_years.sort()
+    available_years = [1987, 1988, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2002, 2006, 2010, 2015, 2017, 2022]
     selected_year = st.slider('Select a year:', min_value=min(available_years), max_value=max(available_years), value=min(available_years))
 
     # Country filter for excluding or including the United States
@@ -46,11 +41,6 @@ with st.sidebar:
 
     # Group Selection for G-5 or G-20
     group_option = st.radio("Select Group:", ('G-5', 'G-20'))
-
-    # Country correlation analysis
-    st.subheader("Country Correlation Analysis")
-    country1 = st.selectbox("Select Country 1", df['Country'].unique())
-    country2 = st.selectbox("Select Country 2", df['Country'].unique())
 
 # Filter data based on selected year
 year_filtered_df = df[df['Year'] == selected_year]
@@ -104,48 +94,14 @@ with col2:
     group_percentage_chart = st.bar_chart(group_percentage, use_container_width=True)
     st.write(f"Total mentions for {group_option} countries in {selected_year}: {int(group_df['Count'].sum())}")
 
-# Create a word cloud based on the individual words in 'Summary Topics' for the selected year
-st.header("Top topics mentioned in this year")
-words_to_remove = ['united states', 'united states of america', 'national security strategy', 'national', 'security', 'strategy', 'america', 'american']
-summary_topics = ' '.join(year_filtered_df['Summary_Topics'].str.split(',').explode())
-summary_topics = ' '.join([word for word in summary_topics.split() if word.lower() not in words_to_remove])
-wordcloud = WordCloud(stopwords=STOPWORDS, background_color='white', width=800, height=400).generate(summary_topics)
-fig, ax = plt.subplots(figsize=(10, 6))
-ax.imshow(wordcloud, interpolation='bilinear')
-ax.axis('off')
-st.pyplot(fig)
+# Create a bar chart for Continents
+st.header("Total Mentions by Continent")
+continent_mentions = year_filtered_df.groupby('Continent')['Count'].sum()
+continent_percentage = continent_mentions / total_count_year * 100
 
+col3, col4 = st.columns(2)
+with col3:
+    st.bar_chart(continent_mentions, use_container_width=True)
 
-# Country correlation analysis
-with st.sidebar:
-    if country1 != country2:
-        country1_data = df[df['Country'] == country1]['Count']
-        country2_data = df[df['Country'] == country2]['Count']
-
-        # Ensure both countries have data across all years
-        if country1_data.size == country2_data.size:
-            corr, p_value = stats.pearsonr(country1_data, country2_data)
-
-            if abs(corr) >= 0.7:
-                corr_description = "Very strong correlation"
-            elif abs(corr) >= 0.5:
-                corr_description = "Strong correlation"
-            elif abs(corr) >= 0.3:
-                corr_description = "Moderate correlation"
-            else:
-                corr_description = "Weak or no correlation"
-
-            st.write(f"The correlation between {country1} and {country2} is {corr_description} with a correlation coefficient of {corr:.2f} and a p-value of {p_value:.2f}.")
-        else:
-            st.write(f"Correlation cannot be calculated: {country1} and {country2} might not have data for the same years.")
-    else:
-        st.write("Please select two different countries to perform the correlation analysis.")
-
-# Word frequency line chart
-with st.sidebar:
-    st.subheader("Word Frequency Over Time")
-    search_word = st.text_input("Enter a word to search:")
-    if search_word:
-        word_counts = df[df['Summary_Topics'].str.contains(search_word, case=False)].groupby('Year').size()
-        st.line_chart(word_counts)  # Set 'Year' as x-axis
-        st.write(f"The frequency of the word '{search_word}' in the 'Summary Topics' column over the years.")
+with col4:
+    st.bar_chart(continent_percentage, use_container_width=True)
