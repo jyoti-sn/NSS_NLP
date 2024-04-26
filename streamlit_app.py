@@ -40,7 +40,7 @@ st.subheader("Analysis of the US National Security Strategy Document")
 # Sidebar layout
 with st.sidebar:
     # Use a slider for selecting the year
-    available_years = [1987, 1988, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2002, 2006, 2010, 2015, 2017, 2022]
+    available_years = [1987, 1988, 1990, 1991, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2002, 2006, 2010, 2015, 2017, 2022]
     selected_year = st.slider('Select a year:', min_value=min(available_years), max_value=max(available_years), value=min(available_years))
 
     # Country filter for excluding or including the United States
