@@ -123,10 +123,14 @@ if search_word:
     st.line_chart(data=word_counts, x='Year', y='Text')
     st.write(f"The frequency of the word '{search_word}' in the 'Text' column over the years.")
 
-    # Calculate correlation with party
+    # Calculate correlation with party (normalized)
     merged_df = pd.merge(df, presidents_df, on='Year')
-    republican_mentions = merged_df[merged_df['Party'] == 'Republican']['Text'].str.contains(search_word).sum()
-    democratic_mentions = merged_df[merged_df['Party'] == 'Democratic']['Text'].str.contains(search_word).sum()
+    republican_years = merged_df['Party'].value_counts()['Republican']
+    democratic_years = merged_df['Party'].value_counts()['Democratic']
+
+    republican_mentions = merged_df[merged_df['Party'] == 'Republican']['Text'].str.contains(search_word).sum() / republican_years
+    democratic_mentions = merged_df[merged_df['Party'] == 'Democratic']['Text'].str.contains(search_word).sum() / democratic_years
+
     total_mentions = republican_mentions + democratic_mentions
 
     if total_mentions > 0:
@@ -134,10 +138,12 @@ if search_word:
         democratic_percentage = (democratic_mentions / total_mentions) * 100
 
         # Display likelihood in large font
-        st.markdown(f"<center><h2>Republican: {republican_percentage:.1f}%</h2></center>", unsafe_allow_html=True)
-        st.markdown(f"<center><h2>Democratic: {democratic_percentage:.1f}%</h2></center>", unsafe_allow_html=True)
+        st.markdown(f"Republican: {republican_percentage:.1f}%", unsafe_allow_html=True)
+        st.markdown(f"Democratic: {democratic_percentage:.1f}%", unsafe_allow_html=True)
     else:
         st.write("The word was not found in the dataset.")
+
+# ... (rest of the code)
 
 # Methodology
 st.header("Methodology")
