@@ -16,6 +16,9 @@ df = pd.merge(df1, df2, on='Year')
 # Convert 'Text' column to lowercase
 df['Text'] = df['Text'].str.lower()
 
+# Merge with presidents_df
+df = pd.merge(df, presidents_df, on='Year', how='left')
+
 # Presidential DataFrame
 presidents_df = pd.DataFrame({
     "Year": list(range(1987, 1989)) + list(range(1989, 1993)) + list(range(1993, 2001)) + list(range(2001, 2009)) +
@@ -121,7 +124,14 @@ search_word = st.text_input("Enter a word to search:").lower()
 if search_word:
     word_counts = df[df['Text'].str.contains(search_word, case=False)].groupby('Year')['Text'].count().reset_index()
     st.line_chart(data=word_counts, x='Year', y='Text')
-    st.write(f"The frequency of the word '{search_word}' in the 'Text' column over the years.")
+
+    # Calculate correlation between word frequency and political party
+    word_counts['Party'] = df['Party']
+    republican_word_counts = word_counts[word_counts['Party'] == 'Republican']['Text'].sum()
+    democratic_word_counts = word_counts[word_counts['Party'] == 'Democratic']['Text'].sum()
+    total_word_counts = republican_word_counts + democratic_word_counts
+
+    republican_percentage = (republican_word_counts / total_word_counts
 
 # Methodology
 st.header("Methodology")
