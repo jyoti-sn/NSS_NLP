@@ -142,9 +142,3 @@ if search_word:
         st.markdown(f"Democratic: {democratic_percentage:.1f}%", unsafe_allow_html=True)
     else:
         st.write("The word was not found in the dataset.")
-
-# ... (rest of the code)
-
-# Methodology
-st.header("Methodology")
-st.write("This is a placeholder for the methodology section. You can add your write-up about the methodology here.")
